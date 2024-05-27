@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_223648) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_231516) do
   create_table "dogs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "trainer_id", null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_223648) do
     t.bigint "training_session_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["training_session_id"], name: "index_training_steps_on_training_session_id"
     t.index ["training_step_template_id"], name: "index_training_steps_on_training_step_template_id"
   end
