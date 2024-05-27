@@ -8,6 +8,10 @@
 #  updated_at  :datetime         not null
 #  trainer_id  :bigint
 #
+# Indexes
+#
+#  index_training_step_templates_on_trainer_id  (trainer_id)
+#
 require "test_helper"
 
 class TrainingStepTemplateTest < ActiveSupport::TestCase
