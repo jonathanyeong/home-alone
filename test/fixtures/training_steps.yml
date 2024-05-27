@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notes: MyText
+  training_step_template: one
+  training_session: one
+
+two:
+  notes: MyText
+  training_step_template: two
+  training_session: two

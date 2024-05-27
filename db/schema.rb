@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_021047) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_024830) do
   create_table "dogs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "trainer_id", null: false
@@ -44,7 +44,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_021047) do
     t.index ["trainer_id"], name: "index_training_sessions_on_trainer_id"
   end
 
+  create_table "training_step_templates", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_steps", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "notes"
+    t.bigint "training_step_template_id", null: false
+    t.bigint "training_session_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_session_id"], name: "index_training_steps_on_training_session_id"
+    t.index ["training_step_template_id"], name: "index_training_steps_on_training_step_template_id"
+  end
+
   add_foreign_key "dogs", "trainers"
   add_foreign_key "training_sessions", "dogs"
   add_foreign_key "training_sessions", "trainers"
+  add_foreign_key "training_steps", "training_sessions"
+  add_foreign_key "training_steps", "training_step_templates"
 end
