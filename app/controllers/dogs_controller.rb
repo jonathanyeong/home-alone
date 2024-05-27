@@ -7,4 +7,6 @@ class DogsController < ApplicationController
     @dog = current_trainer.dogs.find(params[:id])
     @training_sessions = @dog.training_sessions
   end
+
+  # TODO: create, edit, delete
 end
