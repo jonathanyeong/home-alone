@@ -26,4 +26,6 @@ class TrainingSession < ApplicationRecord
   belongs_to :trainer
   belongs_to :dog
   has_many :training_steps
+  accepts_nested_attributes_for :training_steps, reject_if: lambda { |attributes| attributes['description'].blank? }
+
 end

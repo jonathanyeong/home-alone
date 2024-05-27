@@ -6,3 +6,5 @@
   <p>Rating: <%= training_session.rating %></p>
   <p>Longest absence: <%= training_session.longest_absence %></p>
 <% end %>
+
+<%= link_to "Create new Training Session", new_training_session_path(dog_id: @dog.id) %>

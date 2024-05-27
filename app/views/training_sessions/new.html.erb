@@ -1,0 +1,13 @@
+For Dog: <%= @dog.name %>
+<%= form_with model: @training_session do |form| %>
+  Session Steps:
+  <ul>
+    <%= form.fields_for :training_steps do |training_steps_form| %>
+      <li>
+        <%= training_steps_form.label :description %>
+        <%= training_steps_form.text_field :description %>
+      </li>
+    <% end %>
+  </ul>
+  <%= form.submit "Create New Session" %>
+<% end %>
