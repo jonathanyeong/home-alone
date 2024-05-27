@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  started_at: 2024-05-26 22:10:47
+  completed_at: 2024-05-26 22:10:47
+  rating: 1
+  longest_absence: 1
+  trainer: one
+  dog: one
+
+two:
+  started_at: 2024-05-26 22:10:47
+  completed_at: 2024-05-26 22:10:47
+  rating: 1
+  longest_absence: 1
+  trainer: two
+  dog: two

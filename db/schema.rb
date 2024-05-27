@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_26_222815) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_021047) do
   create_table "dogs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "trainer_id", null: false
@@ -31,5 +31,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_222815) do
     t.index ["reset_password_token"], name: "index_trainers_on_reset_password_token", unique: true
   end
 
+  create_table "training_sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "started_at"
+    t.datetime "completed_at"
+    t.integer "rating"
+    t.integer "longest_absence"
+    t.bigint "trainer_id", null: false
+    t.bigint "dog_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dog_id"], name: "index_training_sessions_on_dog_id"
+    t.index ["trainer_id"], name: "index_training_sessions_on_trainer_id"
+  end
+
   add_foreign_key "dogs", "trainers"
+  add_foreign_key "training_sessions", "dogs"
+  add_foreign_key "training_sessions", "trainers"
 end
