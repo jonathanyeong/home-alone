@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_trainer!
+  skip_before_action :authenticate_trainer!
   def index
   end
 end

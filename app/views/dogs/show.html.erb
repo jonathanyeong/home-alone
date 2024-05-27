@@ -1,0 +1,8 @@
+<h1><%= @dog.name %></h1>
+<% @training_sessions.each do |training_session| %>
+  <h2>Training Session</h2>
+  <p>Started At: <%= training_session.started_at %></p>
+  <p>Completed At: <%= training_session.completed_at %></p>
+  <p>Rating: <%= training_session.rating %></p>
+  <p>Longest absence: <%= training_session.longest_absence %></p>
+<% end %>
