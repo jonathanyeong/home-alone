@@ -1,3 +1,3 @@
 class TrainingStepTemplate < ApplicationRecord
-  has_many :training_steps
+  belongs_to :trainer
 end
