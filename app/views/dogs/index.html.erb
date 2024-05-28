@@ -1,3 +1,14 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+  </tr>
 <% @dogs.each do |dog| %>
-  <%= link_to "#{dog.name}", dog %>
+  <tr>
+    <td><%= dog.name %></td>
+    <td><%= link_to "Details", dog_path(dog) %></td>
+    <td><%= link_to "+ Create Training Session", new_training_session_path(dog_id: dog.id) %></td>
+  </tr>
 <% end %>
+</table>

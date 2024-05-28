@@ -9,5 +9,6 @@ For Dog: <%= @dog.name %>
       </li>
     <% end %>
   </ul>
+  <%= f.hidden_field :dog_id, value: @dog.id %>
   <%= form.submit "Create New Session" %>
 <% end %>
