@@ -14,6 +14,8 @@
     <nav>
       <% if trainer_signed_in? %>
         <%= link_to "Sign Out", destroy_trainer_session_path, data: { turbo_method: :delete }%>
+      <% else %>
+        <%= link_to "Sign In", new_trainer_session_path %>
       <% end %>
     </nav>
     <%= yield %>
