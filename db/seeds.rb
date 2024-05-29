@@ -1,7 +1,9 @@
 puts "Creating a new trainer"
 trainer = Trainer.create!(email: "doggyowner@anxiety.com", password: "password", password_confirmation: "password")
+trainer2 = Trainer.create!(email: "doggyowner2@anxiety.com", password: "password", password_confirmation: "password")
 puts "Adding dog for the trainer: #{trainer.email}"
 dog = trainer.dogs.create!(name: "Albie")
+trainer2.dogs.create!(name: "Indie boy")
 # puts "Creating some step templates"
 # template_1 = TrainingStepTemplate.create!(description: "Walk to FD, turn door handle without opening the door, come back")
 # template_2 = TrainingStepTemplate.create!(description: "Exit FD (close FD fully) immediately return")

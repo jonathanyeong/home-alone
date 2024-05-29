@@ -4,7 +4,7 @@ class DogsController < ApplicationController
   end
 
   def show
-    @dog = current_trainer.dogs.find(params[:id])
+    @dog = current_trainer.dogs.find_by(slug: params[:id])
     @training_sessions = @dog.training_sessions
   end
 
