@@ -20,7 +20,7 @@
 class Dog < ApplicationRecord
   belongs_to :trainer
   has_many :training_sessions
-  before_create ->(dog) { dog.slug = dog.name.underscore.dasherize }
+  before_create ->(dog) { dog.slug = dog.name.downcase.gsub(/\s/u, "-") }
 
   def to_param
     slug
