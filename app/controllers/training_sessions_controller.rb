@@ -1,18 +1,36 @@
 class TrainingSessionsController < ApplicationController
+  def index
+    @training_sessions = TrainingSession.where(trainer_id: current_trainer.id)
+  end
+
   def new
-    @dog = Dog.find(params[:dog_id])
-    @training_session = @dog.training_sessions.new
+    if params[:dog_name]
+      @dog = current_trainer.dogs.find_by(name: params[:dog_name])
+    else
+      @dogs = current_trainer.dogs
+    end
+    @training_session = TrainingSession.new
     2.times { @training_session.training_steps.build }
   end
 
   def create
-    dog = Dog.find(params[:dog_id])
-    dog.training_sessions.create(training_session_params, trainer_id: current_trainer.id)
+    dog = current_trainer.dogs.find(training_session_params["dog_id"])
+    unless dog
+      flash[:error] = "Dog not found!"
+      redirect_to new_training_session_path
+    end
+    training_session = dog.training_sessions.new(training_session_params.merge(trainer_id: current_trainer.id))
+    if training_session.save
+      training_session.save
+      redirect_to training_sessions_path
+    else
+      render "new"
+    end
   end
 
   private
 
   def training_session_params
-    params.require(:training_session).permit(training_steps_attributes: [:id, :description])
+    params.require(:training_session).permit(:dog_id, training_steps_attributes: [:id, :description])
   end
 end

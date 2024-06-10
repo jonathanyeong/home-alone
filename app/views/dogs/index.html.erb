@@ -8,7 +8,7 @@
   <tr>
     <td><%= dog.name %></td>
     <td><%= link_to "Details", dog_path(dog) %></td>
-    <td><%= link_to "+ Create Training Session", new_training_session_path(dog_id: dog.id) %></td>
+    <td><%= link_to "+ Create Training Session", new_training_session_path(dog_name: dog.name) %></td>
   </tr>
 <% end %>
 </table>

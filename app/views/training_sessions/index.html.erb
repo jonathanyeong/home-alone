@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Dog</th>
+    <th>Rating</th>
+    <th>Longest Absence</th>
+    <th>Started At</th>
+    <th>Completed At</th>
+    <th>Steps</th>
+  </tr>
+<% @training_sessions.each do |ts| %>
+  <tr>
+    <td><%= ts.dog.name %></td>
+    <td><%= ts.rating %></td>
+    <td><%= ts.longest_absence %></td>
+    <td><%= ts.started_at %></td>
+    <td><%= ts.completed_at %></td>
+    <td>
+      <ul>
+      <% ts.training_steps.collect do |tst| %>
+        <li><%= tst.description %></li>
+      <% end %>
+      </ul>
+    </td>
+  </tr>
+<% end %>
+</table>

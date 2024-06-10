@@ -1,5 +1,17 @@
-For Dog: <%= @dog.name %>
+<% if @dog %>
+  <h1> Creating Training session for <%= @dog.name %></h1>
+<% end %>
+
+<!-- We should move the form into a partial -->
 <%= form_with model: @training_session do |form| %>
+  <% if @dog %>
+    <%= form.hidden_field :dog_id, value: @dog.id %>
+  <% end %>
+
+  <% if @dogs %>
+    <p>Select dropdown for multiple dogs</p>
+  <% end %>
+
   Session Steps:
   <ul>
     <%= form.fields_for :training_steps do |training_steps_form| %>
@@ -9,6 +21,5 @@ For Dog: <%= @dog.name %>
       </li>
     <% end %>
   </ul>
-  <%= f.hidden_field :dog_id, value: @dog.id %>
   <%= form.submit "Create New Session" %>
 <% end %>
