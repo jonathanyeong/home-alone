@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :dogs, only: [:index, :show]
-  resources :training_sessions, only: [:show, :new, :create, :index]
+  resources :training_sessions
   root "pages#index"
 end

@@ -28,6 +28,10 @@ class TrainingSessionsController < ApplicationController
     end
   end
 
+  def show
+    @training_session = TrainingSession.where(id: params[:id], trainer_id: current_trainer.id).first
+  end
+
   private
 
   def training_session_params
