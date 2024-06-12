@@ -12,6 +12,9 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 
+gem "sorbet-runtime"
+gem "tapioca", require: false, :group => [:development, :test]
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -33,6 +36,7 @@ group :development do
   gem "web-console"
   gem "annotate"
   gem "pry"
+  gem "sorbet"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
