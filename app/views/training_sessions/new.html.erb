@@ -3,7 +3,8 @@
 <% end %>
 
 <!-- We should move the form into a partial -->
-<%= form_with model: @training_session do |form| %>
+
+<%= form_with model: @training_session, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |form| %>
   <% if @dog %>
     <%= form.hidden_field :dog_id, value: @dog.id %>
   <% end %>
@@ -13,13 +14,20 @@
   <% end %>
 
   Session Steps:
-  <ul>
-    <%= form.fields_for :training_steps do |training_steps_form| %>
-      <li>
-        <%= training_steps_form.label :description %>
-        <%= training_steps_form.text_field :description %>
-      </li>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :training_steps, TrainingStep.new, child_index: 'NEW_RECORD' do |training_steps_form| %>
+      <%= render partial: "training_step_fields", locals: { f: training_steps_form }%>
     <% end %>
-  </ul>
+  </template>
+
+
+  <%= form.fields_for :training_steps do |training_steps_form| %>
+    <%= render partial: "training_step_fields", locals: { f: training_steps_form } %>
+  <% end %>
+
+  <div data-nested-form-target="target"></div>
+
+  <button type="button" data-action="nested-form#add">Add Training Step</button>
+
   <%= form.submit "Create New Session" %>
 <% end %>
