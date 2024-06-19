@@ -4,11 +4,12 @@ class TrainingSessionsController < ApplicationController
   end
 
   def new
-    if params[:dog_name]
-      @dog = current_trainer.dogs.find_by(name: params[:dog_name])
-    else
-      @dogs = current_trainer.dogs
+    unless params[:dog_name]
+      flash[:notice] = "Dog not found!"
+      redirect_to dogs_path
     end
+
+    @dog = current_trainer.dogs.find_by(name: params[:dog_name])
     @training_session = TrainingSession.new
     2.times { @training_session.training_steps.build }
   end

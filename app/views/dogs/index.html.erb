@@ -1,14 +1,18 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-  </tr>
-<% @dogs.each do |dog| %>
-  <tr>
-    <td><%= dog.name %></td>
-    <td><%= link_to "Details", dog_path(dog) %></td>
-    <td><%= link_to "+ Create Training Session", new_training_session_path(dog_name: dog.name) %></td>
-  </tr>
-<% end %>
-</table>
+<div class="relative rounded-xl overflow-x-auto shadow-md sm:rounded-lg w-auto">
+  <table class="min-w-full">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="py-4">Name</th>
+        <th class="py-4"></th>
+        <th class="py-4"></th>
+      </tr>
+    </thead>
+    <% @dogs.each do |dog| %>
+      <tr class="odd:bg-white even:bg-gray-50">
+        <td class="py-4 text-center"><%= dog.name %></td>
+        <td class="py-4 text-center font-bold hover:underline"><%= link_to "Details", dog_path(dog) %></td>
+        <td class="py-4 text-center font-bold hover:underline"><%= link_to "+ Create Training Session", new_training_session_path(dog_name: dog.name) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
