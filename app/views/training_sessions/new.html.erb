@@ -1,17 +1,10 @@
-<% if @dog %>
-  <h1> Creating Training session for <%= @dog.name %></h1>
-<% end %>
+<h1 class="text-5xl mb-6"> Creating Training session for <%= @dog.name %></h1>
+
 
 <!-- We should move the form into a partial -->
 
 <%= form_with model: @training_session, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |form| %>
-  <% if @dog %>
-    <%= form.hidden_field :dog_id, value: @dog.id %>
-  <% end %>
-
-  <% if @dogs %>
-    <p>Select dropdown for multiple dogs</p>
-  <% end %>
+  <%= form.hidden_field :dog_id, value: @dog.id %>
 
   Session Steps:
   <template data-nested-form-target="template">
@@ -27,7 +20,12 @@
 
   <div data-nested-form-target="target"></div>
 
-  <button type="button" data-action="nested-form#add">Add Training Step</button>
+  <div class="my-5">
+    <button type="button" data-action="nested-form#add" class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Add Training Step</button>
+  </div>
 
-  <%= form.submit "Create New Session" %>
+  <div class="flex gap-x-4">
+    <%= link_to "Cancel", dog_path(@dog), class: "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5" %>
+    <%= form.submit "Create New Session", class: "py-2.5 px-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg focus:outline-none" %>
+  </div>
 <% end %>
